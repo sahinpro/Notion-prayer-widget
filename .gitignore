@@ -1,13 +1,28 @@
+# dependencies
+node_modules
+
+# build output
+dist
+dist-ssr
+
+# env files
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-.env.development
-.env.test
-.env.production
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-.dist
+.env.*
+!.env.example
+
+# logs
+*.log
+npm-debug.log*
+
+# Vercel
+.vercel
+
+# editor / OS
+.DS_Store
+Thumbs.db
+*.local
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+.idea
