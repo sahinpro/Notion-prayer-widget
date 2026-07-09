@@ -1,0 +1,399 @@
+:root {
+  color-scheme: dark;
+
+  /* Apple-inspired semantic tokens */
+  --surface-primary: rgba(255, 255, 255, 0.1);
+  --surface-secondary: rgba(255, 255, 255, 0.06);
+  --surface-elevated: rgba(28, 28, 30, 0.72);
+  --separator: rgba(255, 255, 255, 0.12);
+  --label-primary: rgba(255, 255, 255, 0.92);
+  --label-secondary: rgba(255, 255, 255, 0.55);
+  --label-tertiary: rgba(255, 255, 255, 0.35);
+  --accent: #30d158;
+  --accent-muted: rgba(48, 209, 88, 0.18);
+  --accent-border: rgba(48, 209, 88, 0.28);
+  --danger: #ff453a;
+  --warning: #ffd60a;
+  --scrim: rgba(0, 0, 0, 0.45);
+  --blur: 40px;
+  --radius-card: 20px;
+  --radius-row: 12px;
+  --radius-button: 12px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  min-height: 100dvh;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+    "Segoe UI", system-ui, sans-serif;
+  color: var(--label-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  touch-action: manipulation;
+}
+
+/* Islamic wallpaper layers */
+.wallpaper {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    url("assets/wallpapers/islamic-geometric.svg") center / cover no-repeat,
+    linear-gradient(165deg, #0a1628 0%, #0f2847 45%, #061018 100%);
+}
+
+.wallpaper-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: var(--scrim);
+  pointer-events: none;
+}
+
+#app {
+  position: relative;
+  z-index: 2;
+  padding-top: calc(16px + var(--safe-top));
+  padding-bottom: calc(16px + var(--safe-bottom));
+  padding-left: calc(16px + var(--safe-left));
+  padding-right: calc(16px + var(--safe-right));
+}
+
+/* Apple frosted glass card */
+.glass-card {
+  background: var(--surface-elevated);
+  backdrop-filter: blur(var(--blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%);
+  border: 1px solid var(--separator);
+  border-radius: var(--radius-card);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.glass-card-padded {
+  padding: 20px;
+}
+
+/* iOS grouped list */
+.grouped-list {
+  display: grid;
+  gap: 2px;
+  padding: 0 12px 16px;
+}
+
+.list-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 12px;
+  border-radius: var(--radius-row);
+  min-height: 44px;
+  transition: background 180ms ease;
+}
+
+.list-row-active {
+  background: var(--accent-muted);
+  box-shadow: inset 0 0 0 1px var(--accent-border);
+}
+
+.list-row-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--surface-secondary);
+  color: var(--label-secondary);
+}
+
+.list-row-active .list-row-icon {
+  background: rgba(48, 209, 88, 0.15);
+  color: var(--accent);
+}
+
+/* Apple buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: none;
+  border-radius: var(--radius-button);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 120ms ease,
+    opacity 180ms ease,
+    background 180ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  width: 100%;
+  background: var(--accent);
+  color: #000;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.06);
+}
+
+.btn-secondary {
+  background: var(--surface-secondary);
+  color: var(--label-primary);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--label-secondary);
+  min-height: 44px;
+}
+
+.btn-ghost:hover {
+  color: var(--label-primary);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.btn-toolbar {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  background: transparent;
+  color: var(--label-tertiary);
+  font-size: 11px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    background 180ms ease;
+}
+
+.btn-toolbar:hover {
+  color: var(--label-secondary);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.toolbar {
+  display: flex;
+  border-top: 1px solid var(--separator);
+}
+
+.toolbar .btn-toolbar + .btn-toolbar {
+  border-left: 1px solid var(--separator);
+}
+
+/* Form fields — iOS style */
+.field-label {
+  display: block;
+  font-size: 11px;
+  color: var(--label-tertiary);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.field-input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--separator);
+  border-radius: 10px;
+  color: var(--label-primary);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 180ms ease;
+}
+
+.field-input:focus {
+  border-color: var(--accent-border);
+}
+
+/* Next prayer banner */
+.next-banner {
+  margin: 0 20px 12px;
+  padding: 14px 16px;
+  border-radius: var(--radius-row);
+  background: linear-gradient(
+    135deg,
+    rgba(48, 209, 88, 0.16),
+    rgba(48, 209, 88, 0.06)
+  );
+  border: 1px solid var(--accent-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Flip clock digits */
+.digit {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.flip-digit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 48px;
+  border-radius: 10px;
+  font-size: 28px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.95);
+  color: #000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.flip-digit-muted {
+  background: rgba(255, 255, 255, 0.75);
+  color: rgba(0, 0, 0, 0.65);
+}
+
+/* Alerts */
+.alert-error {
+  border: 1px solid rgba(255, 69, 58, 0.3);
+  background: rgba(255, 69, 58, 0.12);
+  border-radius: var(--radius-card);
+  padding: 20px;
+}
+
+.alert-warning {
+  margin: 0 20px 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(255, 214, 10, 0.1);
+  border: 1px solid rgba(255, 214, 10, 0.22);
+  font-size: 11px;
+  color: rgba(255, 214, 10, 0.9);
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+/* Loading */
+.loading-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 64px 0;
+  color: var(--label-tertiary);
+  font-size: 14px;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Typography scale (Apple Dynamic Type inspired) */
+.text-title {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.text-subhead {
+  font-size: 13px;
+  color: var(--label-secondary);
+}
+
+.text-caption {
+  font-size: 12px;
+  color: var(--label-tertiary);
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+::selection {
+  background: rgba(48, 209, 88, 0.3);
+}
+
+.fade-in {
+  animation: fadeIn 280ms cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(48, 209, 88, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 0 8px rgba(48, 209, 88, 0);
+  }
+}
+
+.live-dot {
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .live-dot,
+  .spinner {
+    animation: none;
+  }
+
+  .btn:active {
+    transform: none;
+  }
+}
