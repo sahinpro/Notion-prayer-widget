@@ -466,7 +466,7 @@ export default function PrayerTimesWidget() {
         initial={{ opacity: 0, y: 6 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <Card className="wide-widget overflow-hidden border-white/10 bg-[#0a0a0a]">
+        <Card className="wide-widget overflow-hidden border-white/10 ">
           {/* Top bar: location + next prayer inline */}
           <div className="flex items-center justify-between gap-4 border-b border-white/10 px-4 py-3">
             <div className="flex min-w-0 shrink-0 items-center gap-2.5">
