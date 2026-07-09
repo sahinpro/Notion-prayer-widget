@@ -14,11 +14,16 @@
 | `--label-secondary` | `rgba(255,255,255,0.55)` | Subtitles |
 | `--scrim` | `rgba(0,0,0,0.45)` | Wallpaper overlay for legibility |
 
-## Typography
-- **Font**: `-apple-system`, SF Pro Text/Display
-- **Title**: 17px semibold
-- **Body**: 15px regular
-- **Caption**: 11–12px
+## Typography (DeenTab)
+- **Font**: `Inter, Poppins, Segoe UI, system-ui`
+- **Base**: `16px`
+- **Widget title**: `text-sm font-medium` (14px)
+- **City**: `text-lg font-semibold` (18px)
+- **Country**: `text-sm text-white/70` (14px)
+- **Next label**: `text-sm text-white/80` (14px)
+- **Countdown**: `text-3xl font-mono font-bold` (30px)
+- **Prayer name**: `text-base font-medium` (16px)
+- **Prayer time**: `font-mono text-sm` (14px)
 
 ## Components
 - `glass-card` — frosted container with blur(40px)
